@@ -15,5 +15,3 @@
 ###### [ { token: '64 didnt answerd', count: 65072 } ]
 ###### clint with longest talk time
 ###### 15a3a4c9-7287-11e7-b8c4-525400680e18 999
-###### mdeaas-MacBook-Pro:hackethon-challeng hamdongunner$ 
-
