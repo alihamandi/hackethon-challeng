@@ -1,3 +1,4 @@
+console.time("end time");
 var columns = ["date", "callerid", "employeeid", "duration", "timeTalk", "status"];
 const mostCommon = require('most-common');
 const sortJsonArray = require('sort-json-array');
@@ -23,14 +24,43 @@ require("csv-to-array")({
                 array2[i].timeTalk = 0;
             }
             times.push(array[i].date[0] + array[i].date[1] + array[i].date[2] + array[i].date[3] + array[i].date[4] + array[i].date[5] + array[i].date[6] + array[i].date[8] + array[i].date[7] + array[i].date[8] + array[i].date[9] + array[i].date[10] + array[i].date[11] + array[i].date[12] + array[i].date[13] + array[i].date[14] + array[i].date[15]);
-            relashin.push(array[i].callerid + array[i].employeeid);       
+            relashin.push(array[i].callerid + array[i].employeeid);
             callers.push(array[i].callerid);
             if(array[i].status === "ANSWERED"){
-                mostP.push(array[i].employeeid + array[i].status);            
+                mostP.push(array[i].employeeid + array[i].status);
             }else{
-                leastP.push(array[i].employeeid + " didnt answerd");            
+                leastP.push(array[i].employeeid + " didnt answerd");
             }
+            // let date = new Date(array[i].date);
+            // seconds[i] = date.getTime() / 1000; //1440516958
+            //
+            // end[i] = seconds[i] + array[i].duration;
+            // start[i] = end[i] - array[i].timeTalk;
+            //
+
         }
+        // let count =1;
+        // for (var s = 0; s < array.length - 1; s++) {
+        //             tempS = start[s];
+        //             tempE = end[s];
+        //             c = 0;
+        //             for (var j = 0; j < array.length; j++) {
+        //               if (end[J+1]<start[j]){
+        //               // (start[s] > start[s+1] && start[s] < end[s+1] || start[s+1] > start[s] && start[s+1] < end[s]);
+        //               //   if(true){
+        //                   secondProb=[c++,start[j+a],end[s] ];
+        //
+        //                 }
+        //               }
+        //             if (secondProb[0] > count) {
+        //               //  popular = temp; // max intersection
+        //                 count = secondProb[0];
+        //             }
+        //             console.timeEnd("end tine")
+        //
+        //         });
+        // console.log(secondProb);
+
         for( i=0 ; i< array2.length -1 ; i ++){
             if(array2[i].timeTalk != 0){
                 array3.push(array2[i]);
@@ -43,6 +73,7 @@ require("csv-to-array")({
              max = array3[i].timeTalk;
              u = i ;
          }
+
         }
 
     console.log('the peak minute');
@@ -60,7 +91,9 @@ require("csv-to-array")({
     console.log('the least productive employee');
     console.log(mostCommon(leastP, 1));
     ////////
-    console.log('mAX is ');
+    console.log('clint with longest talk time ');
     console.log(array3[u].callerid , max);
-    
+    console.timeEnd("end time");
+
+
 });
