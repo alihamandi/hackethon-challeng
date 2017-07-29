@@ -8,15 +8,16 @@ var relashin = [];
 var mostP = [];
 var leastP = [];
 var array2 = [];
-var array3 =[];
 require("csv-to-array")({
    file: "./data.csv",
    columns: columns
+ // unique(arr)
 }, function (err, array) {
         array2 = array;
         sortJsonArray(array2, 'callerid', 'des');
 
         for( i=0 ; i< array.length -1 ; i ++){
+    
             if(array2[i].callerid == array2[i+1].callerid){
                 array2[i+1].timeTalk == parseInt(array2[i+1].timeTalk) + parseInt(array2[i].timeTalk);
             }
@@ -26,7 +27,7 @@ require("csv-to-array")({
             if(array[i].status === "ANSWERED"){
                 mostP.push(array[i].employeeid + array[i].status);
             }else{
-                leastP.push(array[i].employeeid + " didnt ANSWERE");
+                leastP.push(array[i].employeeid + " didnt answerd");
             }
             // let date = new Date(array[i].date);
             // seconds[i] = date.getTime() / 1000; //1440516958
@@ -53,19 +54,21 @@ require("csv-to-array")({
         //               //  popular = temp; // max intersection
         //                 count = secondProb[0];
         //             }
-        //             console.timeEnd("end time")
+        //             console.timeEnd("end tine")
         //
         //         });
         // console.log(secondProb);
 
-        // for( i=0 ; i< array2.length -1 ; i ++){
-        //     if(array2[i].timeTalk != 0){
-        //         array3.push(array2[i]);
-        //     }
-        // }
+    
+        let max = array2[0].timeTalk
+        let u = 0 ;
+         for( i=0 ; i< array2.length -1 ; i ++){
+         if(array2[i].timeTalk > max ){
+             max = array2[i].timeTalk;
+             u = i ;
+         }
 
-          sortJsonArray(array2, 'timeTalk', 'des')
-        
+        }
 
     console.log('the peak minute');
     console.log(mostCommon(times, 1));
@@ -83,7 +86,7 @@ require("csv-to-array")({
     console.log(mostCommon(leastP, 1));
     ////////
     console.log('clint with longest talk time ');
-    console.log(array2[0].callerid , array2[0].timeTalk);
+    console.log(array2[u].callerid , max);
     console.timeEnd("end time");
 
 
