@@ -15,7 +15,7 @@ require("csv-to-array")({
  // unique(arr)
 }, function (err, array) {
         array2 = array;
-        sortJsonArray(array, 'callerid', 'des');
+        sortJsonArray(array2, 'callerid', 'des');
 
         for( i=0 ; i< array.length -1 ; i ++){
             let k = i
@@ -68,7 +68,7 @@ require("csv-to-array")({
         }
         let max = array3[0].timeTalk
         let u = 0 ;
-      for( i=0 ; i< array3.length -1 ; i ++){
+         for( i=0 ; i< array3.length -1 ; i ++){
          if(array3[i].timeTalk > max ){
              max = array3[i].timeTalk;
              u = i ;
