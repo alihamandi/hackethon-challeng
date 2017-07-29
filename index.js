@@ -12,16 +12,13 @@ var array3 =[];
 require("csv-to-array")({
    file: "./data.csv",
    columns: columns
- // unique(arr)
 }, function (err, array) {
         array2 = array;
         sortJsonArray(array2, 'callerid', 'des');
 
         for( i=0 ; i< array.length -1 ; i ++){
-            let k = i
-            if(array2[i].callerid == array2[k+1].callerid){
-                array2[k+1].timeTalk == parseInt(array2[k+1].timeTalk) + parseInt(array2[i].timeTalk);
-                // array2[i].timeTalk = 0;
+            if(array2[i].callerid == array2[i+1].callerid){
+                array2[i+1].timeTalk == parseInt(array2[i+1].timeTalk) + parseInt(array2[i].timeTalk);
             }
             times.push(array[i].date[0] + array[i].date[1] + array[i].date[2] + array[i].date[3] + array[i].date[4] + array[i].date[5] + array[i].date[6] + array[i].date[8] + array[i].date[7] + array[i].date[8] + array[i].date[9] + array[i].date[10] + array[i].date[11] + array[i].date[12] + array[i].date[13] + array[i].date[14] + array[i].date[15]);
             relashin.push(array[i].callerid + array[i].employeeid);
@@ -29,7 +26,7 @@ require("csv-to-array")({
             if(array[i].status === "ANSWERED"){
                 mostP.push(array[i].employeeid + array[i].status);
             }else{
-                leastP.push(array[i].employeeid + " didnt answerd");
+                leastP.push(array[i].employeeid + " didnt ANSWERE");
             }
             // let date = new Date(array[i].date);
             // seconds[i] = date.getTime() / 1000; //1440516958
