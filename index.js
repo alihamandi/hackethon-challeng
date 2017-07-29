@@ -8,7 +8,6 @@ var relashin = [];
 var mostP = [];
 var leastP = [];
 var array2 = [];
-var array3 =[];
 require("csv-to-array")({
    file: "./data.csv",
    columns: columns
@@ -21,7 +20,6 @@ require("csv-to-array")({
             let k = i
             if(array2[i].callerid == array2[k+1].callerid){
                 array2[k+1].timeTalk == parseInt(array2[k+1].timeTalk) + parseInt(array2[i].timeTalk);
-                array2[i].timeTalk = 0;
             }
             times.push(array[i].date[0] + array[i].date[1] + array[i].date[2] + array[i].date[3] + array[i].date[4] + array[i].date[5] + array[i].date[6] + array[i].date[8] + array[i].date[7] + array[i].date[8] + array[i].date[9] + array[i].date[10] + array[i].date[11] + array[i].date[12] + array[i].date[13] + array[i].date[14] + array[i].date[15]);
             relashin.push(array[i].callerid + array[i].employeeid);
@@ -61,16 +59,12 @@ require("csv-to-array")({
         //         });
         // console.log(secondProb);
 
-        for( i=0 ; i< array2.length -1 ; i ++){
-            if(array2[i].timeTalk != 0){
-                array3.push(array2[i]);
-            }
-        }
-        let max = array3[0].timeTalk
+    
+        let max = array2[0].timeTalk
         let u = 0 ;
-         for( i=0 ; i< array3.length -1 ; i ++){
-         if(array3[i].timeTalk > max ){
-             max = array3[i].timeTalk;
+         for( i=0 ; i< array2.length -1 ; i ++){
+         if(array2[i].timeTalk > max ){
+             max = array2[i].timeTalk;
              u = i ;
          }
 
@@ -92,7 +86,7 @@ require("csv-to-array")({
     console.log(mostCommon(leastP, 1));
     ////////
     console.log('clint with longest talk time ');
-    console.log(array3[u].callerid , max);
+    console.log(array2[u].callerid , max);
     console.timeEnd("end time");
 
 
